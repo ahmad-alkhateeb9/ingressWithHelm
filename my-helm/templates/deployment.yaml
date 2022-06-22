@@ -1,0 +1,27 @@
+{{- range $key, $value := .Values.Apps }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .name }}
+  namespace: default
+  labels:
+    app: {{ .name }}
+spec:
+  replicas: 1   
+  selector:
+    matchLabels:
+      app: {{ .name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .name }}
+    spec:
+      containers:
+      - name: {{ .containername }}
+        image: {{ .imageName }}
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3000
+            protocol: TCP
+---
+{{- end }}

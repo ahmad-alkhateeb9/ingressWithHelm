@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thethirdapp-deploy
+  namespace: default
+  labels:
+    app: thethirdapp
+spec:
+  replicas: 1   
+  selector:
+    matchLabels:
+      app: thethirdapp
+  template:
+    metadata:
+      labels:
+        app: thethirdapp
+    spec:
+      containers:
+      - name: thethirdapp-conatiner
+        image: ahmadoosh99/ingressapptask:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3000
+            protocol: TCP
+            

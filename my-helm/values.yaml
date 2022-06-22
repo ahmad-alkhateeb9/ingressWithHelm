@@ -1,0 +1,45 @@
+Apps: 
+  app1:
+    name: thefirstapp
+    containername: thefirstapp-container
+    imageName: ahmadoosh99/ingressapptask:v1
+  
+  app2:
+    name: thesecondapp
+    containername: thesecondapp-conatiner
+    imageName: ahmadoosh99/ingressapptask:app2
+  
+  app3:
+    name: thethirdapp
+    containername: thethirdapp-container
+    imageName: ahmadoosh99/ingressapptask:latest
+
+service:
+  app1:
+    servicename: thefirstapp-service
+    serviceapp: thefirstapp
+
+  app2:
+    servicename: thesecondapp-service
+    serviceapp: thesecondapp
+
+  app3:
+    servicename: thethirdapp-service
+    serviceapp: thethirdapp
+
+ingressname: name-virual-host
+hostahmad: ahmad.com
+
+ingress: 
+  firstHost:
+    hostname: ahmad.com
+    hostPath:
+      path1: /
+      path2: /app2
+    servicename: thefirstapp-service
+    secondservice: thesecondapp-service
+  secondHost: 
+    hostname: appthird.ahmad.com    
+    hostPath: 
+      path1: /
+    servicename: thethirdapp-service

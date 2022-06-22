@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: theThirdapp
+  name: thethirdapp-service
+  namespace: default
+spec:
+  selector:
+    app: thethirdapp
+  ports:
+    - name: thethirdapp-service
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

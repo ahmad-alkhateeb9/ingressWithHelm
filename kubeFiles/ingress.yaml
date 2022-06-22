@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: name-virual-host
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: ahmad.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: thefirstapp-service
+            port:
+              number: 3000
+      - path: /app2
+        pathType: Prefix
+        backend:
+          service:
+            name: thesecondapp-service
+            port:
+              number: 3000
+
+  - host: appthird.ahmad.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: thethirdapp-service
+              port:
+                number: 3000

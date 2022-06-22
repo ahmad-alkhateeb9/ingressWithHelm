@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thesecondapp-deploy
+  namespace: default
+  labels:
+    app: thesecondapp
+spec:
+  replicas: 1   
+  selector:
+    matchLabels:
+      app: thesecondapp
+  template:
+    metadata:
+      labels:
+        app: thesecondapp
+    spec:
+      containers:
+      - name: thesecondapp-conatiner
+        image: ahmadoosh99/ingressapptask:app2
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3000
+            protocol: TCP

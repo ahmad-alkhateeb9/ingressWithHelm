@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thefirstapp-deploy
+  namespace: default
+  labels:
+    app: thefirstapp
+spec:
+  replicas: 1   
+  selector:
+    matchLabels:
+      app: thefirstapp
+  template:
+    metadata:
+      labels:
+        app: thefirstapp
+    spec:
+      containers:
+      - name: thefirstapp
+        image: ahmadoosh99/ingressapptask:v1
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3000
+            protocol: TCP
+            
